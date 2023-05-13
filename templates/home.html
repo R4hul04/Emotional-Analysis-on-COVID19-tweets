@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>SMDM - Home</title>
+</head>
+<body class="bg-slate-200">
+    <div  class="bg-white h-full mt-10 w-5/12 mx-auto p-10 rounded-lg shadow-lg">
+        <h2 class="text-4xl mb-8 text-center">Emotional Analysis of Covid-19 Tweets</h2>
+        <div id="error" class="hidden p-5 rounded-lg text-red-500 border border-2 border-red-500">ERROR !! Rate Limit Exceeded! Wait 15 minutes before trying again!</div>
+        <div class="flex gap-2 justify-between">
+        <a onclick="swap()" href="/analysis" class="text-center block mt-5 py-3 px-5 bg-red-500 rounded-lg shadow text-white">
+           <span id="one" class=""> Analyse Latest Tweets</span>
+            <span id="two" class="hidden flex text-center justify-center">
+                <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                Processing...
+            </span>
+        </a>
+        <a onclick="swap2()" href="/timeseries" class="text-center block mt-5 py-3 px-5 bg-red-500 rounded-lg shadow text-white">
+            <span id="three" class=""> Analyse Tweets of last 10 days</span>
+            <span id="four" class="hidden flex text-center justify-center">
+                <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                Processing...
+            </span>
+        </a>
+    </div>
+    </div>
+    <script>
+        function swap(){
+            document.getElementById("one").classList.toggle("hidden")
+            document.getElementById("two").classList.toggle("hidden")
+        }
+        function swap2(){
+            document.getElementById("three").classList.toggle("hidden")
+            document.getElementById("four").classList.toggle("hidden")
+        }
+
+        if('{{error}}' == "true"){
+            document.getElementById("error").classList.toggle("hidden")
+        }
+    </script>
+</body>
+</html>
